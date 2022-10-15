@@ -1,0 +1,18 @@
+[Unit]
+Description=connect-pi
+Wants=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=1
+WorkingDirectory=/usr/local/boring/connect-pi
+User=root
+Group=root
+Environment=PORT=80
+Environment=BORING_CONFIG=/boot/boring.env
+
+[Install]
+WantedBy=multi-user.target
